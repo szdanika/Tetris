@@ -10,6 +10,11 @@ namespace Tetris
     {
         static void Main(string[] args)
         {
+            Class.WindowSettingSet windowSettingSet = new Class.WindowSettingSet();
+            Class.TheGame theGame = new Class.TheGame();
+            theGame.StartGame();
+
+            Console.ReadKey();
         }
     }
 }
