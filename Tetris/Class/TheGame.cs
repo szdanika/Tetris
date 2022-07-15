@@ -17,10 +17,28 @@ namespace Tetris.Class
         public int pointsWidth = 15;
         public int points = 0;
 
+        public static int startingHeight = 5;
+        public static int startingWidth = 1;
+
 
         public void StartGame()
         {
             UISetUp();
+            Components.Component teszt = CreatingNewComp(Interfaces.componentType.ZComp);
+            teszt.Rotate(true);
+            teszt.Spawn();
+            ConsoleKey key; 
+
+            do
+            {
+                key = Console.ReadKey().Key;
+                if (key == ConsoleKey.LeftArrow)
+                    teszt.Rotate(true);
+                else if (key == ConsoleKey.RightArrow)
+                    teszt.Rotate(false);
+
+                teszt.Spawn();
+            } while (key != ConsoleKey.Escape);
         }
         public void Menu()
         {
@@ -37,7 +55,7 @@ namespace Tetris.Class
         }
         public void UISetUp()
         {
-            for(int i = 0; i < gameWidth+3; i++)
+            for(int i = 0; i < gameWidth+2; i++)
             {
                 Console.SetCursorPosition(i,0);
                 Console.Write("-");
@@ -57,6 +75,14 @@ namespace Tetris.Class
         {
             Console.SetCursorPosition(pointsWidth, pointsHeight);
             Console.Write("U have " + points + " Points ");
+        }
+        Components.Component CreatingNewComp(Interfaces.componentType comType)
+        {
+            switch(comType)
+            {
+                case Interfaces.componentType.ZComp: return new Components.CompZ(comType);
+                default: return null;
+            }
         }
 
     }

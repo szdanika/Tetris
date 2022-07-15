@@ -12,7 +12,8 @@ namespace Tetris.Class.Components
         public componentType type { get; private set; }
         public int topPosition { get ;private set ; }
         public int leftPosition { get ; private set ; }
-        public int rotated { get ; private set ; }
+        public int[,] Positions;
+        public int rotated { get ;  set ; } // starting in 0 and ending in 0
 
         public Component(componentType type)
         {
@@ -20,6 +21,16 @@ namespace Tetris.Class.Components
             topPosition = 0;
             leftPosition = 0;
             rotated = 0;
+        }
+        public void ResetPositions()
+        {
+            for (int i = 0; i < Positions.GetLength(0); i++)
+            {
+                for (int x = 0; x < Positions.GetLength(1); x++)
+                {
+                    Positions[i, x] = 0;
+                }
+            }
         }
 
         abstract public bool CanItGoLeft();
@@ -29,5 +40,8 @@ namespace Tetris.Class.Components
         abstract public bool CanItRotate(bool direction);
 
         abstract public void Rotate(bool direction); //true -> left, false ->right
+        abstract public void Spawn();
+        abstract public bool CanItGoThere();
+        abstract public void WriteItOut(int curx,int cury);
     }
 }
