@@ -10,7 +10,7 @@ namespace Tetris.Class.Components
     internal class CompZ : Component
     {
         int[,] pos0 = new int[,] { { 1, 1, 0 }, { 0, 1, 1 }, { 0, 0, 0 } };
-        int[,] pos1 = new int[,] { { 0, 1, 0 }, { 0, 1, 1 }, { 0, 0, 1 } };
+        int[,] pos1 = new int[,] { { 0, 0, 1 }, { 0, 1, 1 }, { 0, 1, 0 } };
         public CompZ(componentType type) : base(type)
         {
             Positions = pos0; // Starter Z starting in 0,0 and ending in 2,2 (We dont use the last row here)
@@ -20,7 +20,7 @@ namespace Tetris.Class.Components
         {
             throw new NotImplementedException();
         }
-
+         
         public override bool CanItGoRight()
         {
             throw new NotImplementedException();
@@ -70,6 +70,7 @@ namespace Tetris.Class.Components
         {
             Console.SetCursorPosition(TheGame.startingHeight, TheGame.startingWidth);
             CleanMap(TheGame.startingHeight, TheGame.startingWidth);
+            Console.SetCursorPosition(TheGame.startingHeight, TheGame.startingWidth);
             WriteItOut(TheGame.startingHeight, TheGame.startingWidth);
         }
         public void CleanMap(int x, int y)
@@ -79,13 +80,13 @@ namespace Tetris.Class.Components
             {
                 for (int s = 0; s < 3; s++)
                 {
-                    Console.Write("");
-                    x++;
-                    Console.SetCursorPosition(x, y);
+                    Console.SetCursorPosition(sx, sy);
+                    Console.Write(" ");
+                    sx++;
                 }
                 sx = x;
                 sy++;
-                Console.SetCursorPosition(x, y);
+                Console.SetCursorPosition(sx, sy);
             }
         }
 

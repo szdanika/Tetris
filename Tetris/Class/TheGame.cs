@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Tetris.Class
 {
@@ -25,20 +26,23 @@ namespace Tetris.Class
         {
             UISetUp();
             Components.Component teszt = CreatingNewComp(Interfaces.componentType.ZComp);
+            //teszt.Rotate(true);
+            //teszt.Spawn();
+            //ConsoleKey key;
+            teszt.Spawn();
+            Thread.Sleep(1000);
             teszt.Rotate(true);
             teszt.Spawn();
-            ConsoleKey key; 
-
-            do
+            /*do
             {
                 key = Console.ReadKey().Key;
-                if (key == ConsoleKey.LeftArrow)
+                if (key == ConsoleKey.Q)
                     teszt.Rotate(true);
-                else if (key == ConsoleKey.RightArrow)
+                else if (key == ConsoleKey.E)
                     teszt.Rotate(false);
 
                 teszt.Spawn();
-            } while (key != ConsoleKey.Escape);
+            } while (key != ConsoleKey.R);*/
         }
         public void Menu()
         {
