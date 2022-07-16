@@ -39,7 +39,7 @@ namespace Tetris.Class.Components
 
         public override void Rotate(bool direction)
         {
-            ResetPositions();
+            //ResetPositions(); It's just works so i let it be
             if(CanItRotate(direction))
             {
                 if(direction == false)

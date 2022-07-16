@@ -13,7 +13,7 @@ namespace Tetris.Class.Components
         public int topPosition { get ;private set ; }
         public int leftPosition { get ; private set ; }
         public int[,] Positions;
-        public int rotated { get ;  set ; } // starting in 0 and ending in 0
+        public int rotated { get ;  set ; } // starting in 0 and ending in 3
 
         public Component(componentType type)
         {

@@ -29,11 +29,12 @@ namespace Tetris.Class
             //teszt.Rotate(true);
             //teszt.Spawn();
             //ConsoleKey key;
-            teszt.Spawn();
-            Thread.Sleep(1000);
-            teszt.Rotate(true);
-            teszt.Spawn();
-            /*do
+            //teszt.Spawn();
+            //Thread.Sleep(1000);
+            //teszt.Rotate(true);
+            //teszt.Spawn();
+            ConsoleKey key;
+            do
             {
                 key = Console.ReadKey().Key;
                 if (key == ConsoleKey.Q)
@@ -42,7 +43,7 @@ namespace Tetris.Class
                     teszt.Rotate(false);
 
                 teszt.Spawn();
-            } while (key != ConsoleKey.R);*/
+            } while (key != ConsoleKey.R);
         }
         public void Menu()
         {
