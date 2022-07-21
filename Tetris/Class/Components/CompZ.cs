@@ -14,17 +14,10 @@ namespace Tetris.Class.Components
         public CompZ(componentType type) : base(type)
         {
             Positions = pos0; // Starter Z starting in 0,0 and ending in 2,2 (We dont use the last row here)
+            topPosition = TheGame.startingHeight;
+            leftPosition = TheGame.startingWidth;
         }
 
-        public override bool CanItGoLeft()
-        {
-            throw new NotImplementedException();
-        }
-         
-        public override bool CanItGoRight()
-        {
-            throw new NotImplementedException();
-        }
 
         public override bool CanItGoThere()
         {
@@ -33,7 +26,19 @@ namespace Tetris.Class.Components
 
         public override bool CanItRotate(bool direction)
         {
+            int temp = rotated;
+            if (direction == false)
+                temp += 1;
+            else
+                temp -= 1;
 
+            switch(temp)
+            {
+                case 0: return CanItBeThere(pos0);
+                case 1: return CanItBeThere(pos1);
+                case -1: return CanItBeThere(pos1);
+                case 2: return CanItBeThere(pos0);
+            }
             return true;
         }
 
@@ -68,45 +73,11 @@ namespace Tetris.Class.Components
 
         public override void Spawn()
         {
-            Console.SetCursorPosition(TheGame.startingHeight, TheGame.startingWidth);
-            CleanMap(TheGame.startingHeight, TheGame.startingWidth);
-            Console.SetCursorPosition(TheGame.startingHeight, TheGame.startingWidth);
-            WriteItOut(TheGame.startingHeight, TheGame.startingWidth);
-        }
-        public void CleanMap(int x, int y)
-        {
-            int sx = x, sy = y;
-            for (int i = 0; i < 3; i++)
-            {
-                for (int s = 0; s < 3; s++)
-                {
-                    Console.SetCursorPosition(sx, sy);
-                    Console.Write(" ");
-                    sx++;
-                }
-                sx = x;
-                sy++;
-                Console.SetCursorPosition(sx, sy);
-            }
+            Console.SetCursorPosition(TheGame.startingWidth, TheGame.startingHeight);
+            CleanMap(TheGame.startingWidth, TheGame.startingHeight);
+            Console.SetCursorPosition(TheGame.startingWidth, TheGame.startingHeight);
+            WriteItOut(TheGame.startingWidth, TheGame.startingHeight);
         }
 
-        public override void WriteItOut(int curx, int cury)
-        {
-            int x = curx, y = cury;
-            for (int i = 0; i < 3; i++)
-            {
-                for (int k = 0; k < 3; k++)
-                {
-                    if (Positions[i,k] == 1)
-                        Console.Write("*");
-
-                    x++;
-                    Console.SetCursorPosition(x, y );
-                }
-                x = curx;
-                y++;
-             Console.SetCursorPosition(x ,y);
-            }    
-        }
     }
 }

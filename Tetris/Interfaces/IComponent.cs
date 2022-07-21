@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tetris.Interfaces
 {
-    public enum componentType { IComp, JComp, LComp, OComp, SComp, TComp, ZComp}
+    public enum componentType { IComp, JComp, LComp, OComp, SComp, TComp, ZComp, FalComp}
     internal interface IComponent
     {
         ConsoleColor componentColor { get; set; }

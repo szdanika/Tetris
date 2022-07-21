@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Components\CompFal.cs" />
     <Compile Include="Class\Components\CompI.cs" />
     <Compile Include="Class\Components\Component.cs" />
     <Compile Include="Class\Components\CompZ.cs" />
